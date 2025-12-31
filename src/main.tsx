@@ -5,6 +5,8 @@ import "./index.css"
 
 import { ThemeProvider } from "@/components/theme/ThemeProvider"
 import { MainLayout } from "@/components/layout/MainLayout"
+import { Cart } from "@/pages/Cart"
+import { Checkout } from "@/pages/Checkout"
 import { Contact } from "@/pages/Contact"
 import { Home } from "@/pages/Home"
 import { Legal } from "@/pages/Legal"
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/team",
         element: <TeamRiders />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/contact",
