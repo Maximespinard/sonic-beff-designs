@@ -56,7 +56,7 @@ export interface NavbarVariant {
   name: string;
   vibe: NavbarVibe;
   aesthetic: NavbarAesthetic;
-  colors: VariantColors;
+  colors?: VariantColors; // Now optional - colors come from theme CSS variables
   effects: VariantEffects;
 }
 

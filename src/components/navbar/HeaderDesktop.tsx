@@ -340,7 +340,7 @@ export function HeaderDesktop() {
       </nav>
 
       {/* Actions */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 relative z-50">
         <SearchInput />
 
         <Button

@@ -25,17 +25,17 @@
   --navbar-logo-font-size: 1.5rem;
   --navbar-logo-letter-spacing: -0.02em;
 
-  /* Colors - defaults */
-  --navbar-bg: transparent;
+  /* Colors - USE THEME VARIABLES */
+  --navbar-bg: var(--background);
   --navbar-bg-opacity: 1;
-  --navbar-border: transparent;
+  --navbar-border: var(--border);
   --navbar-border-width: 1px;
   --navbar-text: var(--foreground);
-  --navbar-text-muted: oklch(0.55 0.02 250);
+  --navbar-text-muted: var(--muted-foreground);
   --navbar-text-hover: var(--foreground);
   --navbar-accent: var(--primary);
-  --navbar-accent-secondary: var(--primary);
-  --navbar-hover-bg: oklch(0.95 0.01 250);
+  --navbar-accent-secondary: var(--accent);
+  --navbar-hover-bg: var(--muted);
 
   /* Effects - defaults */
   --navbar-shadow: none;
@@ -53,6 +53,7 @@
 /* ============================================
    VIBE: ACTION / EXTREME SPORTS
    Bold, aggressive, high-energy
+   Typography only - colors come from theme
    ============================================ */
 [data-vibe="action"] {
   --navbar-font-family: 'Anton', 'Oswald', sans-serif;
@@ -65,14 +66,12 @@
   --navbar-logo-font-weight: 400;
   --navbar-logo-font-size: 2rem;
   --navbar-logo-letter-spacing: 0.12em;
-
-  --navbar-accent: oklch(0.65 0.27 29);
-  --navbar-accent-secondary: oklch(0.75 0.22 55);
 }
 
 /* ============================================
    VIBE: PREMIUM / LUXURY
    Refined, sophisticated, understated
+   Typography only - colors come from theme
    ============================================ */
 [data-vibe="premium"] {
   --navbar-font-family: 'Lato', 'Montserrat', sans-serif;
@@ -85,14 +84,12 @@
   --navbar-logo-font-weight: 400;
   --navbar-logo-font-size: 1.75rem;
   --navbar-logo-letter-spacing: 0.08em;
-
-  --navbar-accent: oklch(0.72 0.09 75);
-  --navbar-accent-secondary: oklch(0.40 0.08 320);
 }
 
 /* ============================================
    VIBE: PLAYFUL / FUN
    Vibrant, youthful, approachable
+   Typography only - colors come from theme
    ============================================ */
 [data-vibe="playful"] {
   --navbar-font-family: 'Nunito', 'Quicksand', sans-serif;
@@ -105,14 +102,12 @@
   --navbar-logo-font-weight: 600;
   --navbar-logo-font-size: 1.875rem;
   --navbar-logo-letter-spacing: -0.01em;
-
-  --navbar-accent: oklch(0.68 0.24 330);
-  --navbar-accent-secondary: oklch(0.72 0.18 195);
 }
 
 /* ============================================
    VIBE: MINIMAL / MODERN TECH
    Sleek, precise, cutting-edge
+   Typography only - colors come from theme
    ============================================ */
 [data-vibe="minimal"] {
   --navbar-font-family: 'Inter', system-ui, sans-serif;
@@ -125,23 +120,21 @@
   --navbar-logo-font-weight: 600;
   --navbar-logo-font-size: 1.25rem;
   --navbar-logo-letter-spacing: -0.03em;
-
-  --navbar-accent: oklch(0.60 0.18 250);
-  --navbar-accent-secondary: oklch(0.70 0.12 175);
 }
 
 /* ============================================
    AESTHETIC: DARK & BOLD
    Dramatic, high-contrast, powerful
+   Uses elevated surface (card) for dark feel
    ============================================ */
 [data-aesthetic="dark-bold"] {
-  --navbar-bg: oklch(0.12 0.02 280);
+  --navbar-bg: var(--card);
   --navbar-bg-opacity: 0.98;
-  --navbar-border: oklch(0.22 0.03 280);
+  --navbar-border: var(--border);
   --navbar-border-width: 1px;
-  --navbar-text: oklch(0.96 0 0);
-  --navbar-text-muted: oklch(0.60 0.02 280);
-  --navbar-hover-bg: oklch(0.18 0.03 280);
+  --navbar-text: var(--card-foreground);
+  --navbar-text-muted: var(--muted-foreground);
+  --navbar-hover-bg: var(--muted);
   --navbar-shadow: 0 4px 24px oklch(0 0 0 / 0.4);
   --navbar-border-radius: 0;
   --navbar-transition-duration: 150ms;
@@ -151,15 +144,16 @@
 /* ============================================
    AESTHETIC: LIGHT & AIRY
    Bright, open, subtle depth
+   Uses main background for clean look
    ============================================ */
 [data-aesthetic="light-airy"] {
-  --navbar-bg: oklch(0.995 0.002 250);
+  --navbar-bg: var(--background);
   --navbar-bg-opacity: 0.95;
-  --navbar-border: oklch(0.92 0.01 250);
+  --navbar-border: var(--border);
   --navbar-border-width: 1px;
-  --navbar-text: oklch(0.22 0.02 280);
-  --navbar-text-muted: oklch(0.50 0.02 280);
-  --navbar-hover-bg: oklch(0.96 0.01 250);
+  --navbar-text: var(--foreground);
+  --navbar-text-muted: var(--muted-foreground);
+  --navbar-hover-bg: var(--muted);
   --navbar-shadow:
     0 1px 2px oklch(0 0 0 / 0.03),
     0 4px 12px oklch(0 0 0 / 0.04),
@@ -172,16 +166,18 @@
 /* ============================================
    AESTHETIC: BRUTALIST / RAW
    Stark, unconventional, bold
+   High contrast using foreground/background
    ============================================ */
 [data-aesthetic="brutalist"] {
-  --navbar-bg: oklch(0.97 0.01 85);
+  --navbar-bg: var(--background);
   --navbar-bg-opacity: 1;
-  --navbar-border: oklch(0.12 0 0);
+  --navbar-border: var(--foreground);
   --navbar-border-width: 3px;
-  --navbar-text: oklch(0.10 0 0);
-  --navbar-text-muted: oklch(0.35 0 0);
-  --navbar-hover-bg: oklch(0.88 0.12 60);
-  --navbar-shadow: 6px 6px 0 oklch(0.12 0 0);
+  --navbar-text: var(--foreground);
+  --navbar-text-muted: var(--muted-foreground);
+  --navbar-hover-bg: var(--foreground);
+  --navbar-hover-text: var(--background);
+  --navbar-shadow: 6px 6px 0 var(--foreground);
   --navbar-border-radius: 0;
   --navbar-transition-duration: 0ms;
   --navbar-transition-timing: step-end;
@@ -190,15 +186,16 @@
 /* ============================================
    AESTHETIC: GLASSMORPHISM
    Frosted, layered, depth
+   Uses transparent background with blur
    ============================================ */
 [data-aesthetic="glass"] {
-  --navbar-bg: oklch(0.97 0.01 250 / 0.75);
+  --navbar-bg: var(--background-glass, oklch(from var(--background) l c h / 0.75));
   --navbar-bg-opacity: 0.75;
-  --navbar-border: oklch(0.92 0.01 250 / 0.5);
+  --navbar-border: var(--border);
   --navbar-border-width: 1px;
-  --navbar-text: oklch(0.20 0.02 280);
-  --navbar-text-muted: oklch(0.45 0.02 280);
-  --navbar-hover-bg: oklch(0.98 0.01 250 / 0.9);
+  --navbar-text: var(--foreground);
+  --navbar-text-muted: var(--muted-foreground);
+  --navbar-hover-bg: var(--muted);
   --navbar-shadow:
     0 4px 16px oklch(0 0 0 / 0.06),
     0 8px 32px oklch(0 0 0 / 0.04);
@@ -210,24 +207,14 @@
 }
 
 /* ============================================
-   COMBINED VARIANTS - THE 16 UNIQUE DESIGNS
+   COMBINED VARIANTS - EFFECTS & PATTERNS ONLY
+   Colors now come from theme via aesthetics
    ============================================ */
 
 /* ----------------------------------------
    1. MIDNIGHT THUNDER (Action + Dark & Bold)
    ---------------------------------------- */
 [data-vibe="action"][data-aesthetic="dark-bold"] {
-  --navbar-bg: oklch(0.10 0.04 15);
-  --navbar-text: oklch(0.98 0 0);
-  --navbar-accent: oklch(0.65 0.28 30);
-  --navbar-accent-secondary: oklch(0.58 0.24 340);
-  --navbar-border: linear-gradient(90deg, oklch(0.65 0.28 30), oklch(0.58 0.24 340));
-  --navbar-hover-bg: oklch(0.16 0.06 25);
-  --navbar-shadow:
-    0 4px 20px oklch(0.65 0.28 30 / 0.25),
-    0 0 40px oklch(0.65 0.28 30 / 0.1);
-
-  /* Special: gradient border bottom */
   --navbar-border-style: gradient;
   --navbar-mobile-pattern: diagonal-stripes-orange;
 }
@@ -236,17 +223,7 @@
    2. WHITE LIGHTNING (Action + Light & Airy)
    ---------------------------------------- */
 [data-vibe="action"][data-aesthetic="light-airy"] {
-  --navbar-bg: oklch(0.995 0 0);
-  --navbar-text: oklch(0.15 0.03 250);
-  --navbar-accent: oklch(0.52 0.22 250);
-  --navbar-accent-secondary: oklch(0.68 0.22 145);
-  --navbar-hover-bg: oklch(0.52 0.22 250);
-  --navbar-hover-text: oklch(0.99 0 0);
-  --navbar-shadow:
-    0 2px 8px oklch(0.52 0.22 250 / 0.12),
-    0 8px 24px oklch(0.52 0.22 250 / 0.08);
   --navbar-border-radius: 0;
-
   --navbar-mobile-pattern: geometric-blue;
 }
 
@@ -254,15 +231,7 @@
    3. RAW POWER (Action + Brutalist)
    ---------------------------------------- */
 [data-vibe="action"][data-aesthetic="brutalist"] {
-  --navbar-bg: oklch(0.94 0.02 85);
-  --navbar-text: oklch(0.08 0 0);
-  --navbar-accent: oklch(0.58 0.26 30);
-  --navbar-border: oklch(0.08 0 0);
   --navbar-border-width: 4px;
-  --navbar-hover-bg: oklch(0.08 0 0);
-  --navbar-hover-text: oklch(0.94 0.02 85);
-  --navbar-shadow: 8px 8px 0 oklch(0.08 0 0);
-
   --navbar-mobile-pattern: industrial-grid;
 }
 
@@ -270,18 +239,7 @@
    4. NEON HAZE (Action + Glassmorphism)
    ---------------------------------------- */
 [data-vibe="action"][data-aesthetic="glass"] {
-  --navbar-bg: oklch(0.14 0.08 285 / 0.65);
-  --navbar-text: oklch(0.95 0 0);
-  --navbar-text-muted: oklch(0.70 0.05 285);
-  --navbar-accent: oklch(0.75 0.22 175);
-  --navbar-accent-secondary: oklch(0.70 0.22 330);
-  --navbar-border: oklch(0.70 0.18 200 / 0.4);
-  --navbar-hover-bg: oklch(0.20 0.10 285 / 0.8);
-  --navbar-shadow:
-    0 0 30px oklch(0.75 0.22 175 / 0.3),
-    0 0 60px oklch(0.70 0.22 330 / 0.2);
   --navbar-backdrop-blur: 24px;
-
   --navbar-mobile-pattern: neon-grid;
 }
 
@@ -289,16 +247,6 @@
    5. BLACK TIE (Premium + Dark & Bold)
    ---------------------------------------- */
 [data-vibe="premium"][data-aesthetic="dark-bold"] {
-  --navbar-bg: oklch(0.08 0.01 285);
-  --navbar-text: oklch(0.92 0.02 85);
-  --navbar-text-muted: oklch(0.55 0.03 85);
-  --navbar-accent: oklch(0.75 0.08 85);
-  --navbar-accent-secondary: oklch(0.38 0.06 320);
-  --navbar-border: oklch(0.75 0.08 85 / 0.3);
-  --navbar-hover-bg: transparent;
-  --navbar-shadow: none;
-
-  /* Thin gold line only */
   --navbar-border-style: gold-line;
   --navbar-mobile-pattern: velvet-black;
 }
@@ -307,17 +255,6 @@
    6. IVORY SUITE (Premium + Light & Airy)
    ---------------------------------------- */
 [data-vibe="premium"][data-aesthetic="light-airy"] {
-  --navbar-bg: oklch(0.98 0.01 75);
-  --navbar-text: oklch(0.28 0.04 55);
-  --navbar-text-muted: oklch(0.52 0.04 55);
-  --navbar-accent: oklch(0.48 0.08 55);
-  --navbar-accent-secondary: oklch(0.58 0.10 30);
-  --navbar-border: oklch(0.90 0.02 75);
-  --navbar-hover-bg: oklch(0.95 0.02 75);
-  --navbar-shadow:
-    0 1px 1px oklch(0.48 0.08 55 / 0.05),
-    0 4px 16px oklch(0.48 0.08 55 / 0.04);
-
   --navbar-mobile-pattern: fine-lines;
 }
 
@@ -325,20 +262,11 @@
    7. AVANT-GARDE (Premium + Brutalist)
    ---------------------------------------- */
 [data-vibe="premium"][data-aesthetic="brutalist"] {
-  --navbar-bg: oklch(0.99 0 0);
-  --navbar-text: oklch(0.10 0 0);
-  --navbar-accent: oklch(0.42 0.14 285);
-  --navbar-border: oklch(0.10 0 0);
   --navbar-border-width: 2px;
-  --navbar-hover-bg: oklch(0.42 0.14 285);
-  --navbar-hover-text: oklch(0.99 0 0);
-  --navbar-shadow: 4px 4px 0 oklch(0.10 0 0);
-
   /* Mixed typography creates tension */
   --navbar-logo-font-family: 'Cormorant Garamond', serif;
   --navbar-font-family: 'Helvetica Neue', 'Arial', sans-serif;
   --navbar-font-weight: 700;
-
   --navbar-mobile-pattern: bw-split;
 }
 
@@ -346,19 +274,7 @@
    8. CRYSTAL PALACE (Premium + Glassmorphism)
    ---------------------------------------- */
 [data-vibe="premium"][data-aesthetic="glass"] {
-  --navbar-bg: oklch(0.96 0.02 290 / 0.65);
-  --navbar-text: oklch(0.25 0.04 290);
-  --navbar-text-muted: oklch(0.48 0.04 290);
-  --navbar-accent: oklch(0.68 0.08 25);
-  --navbar-accent-secondary: oklch(0.75 0.06 320);
-  --navbar-border: oklch(0.88 0.03 290 / 0.5);
-  --navbar-hover-bg: oklch(0.98 0.02 290 / 0.85);
-  --navbar-shadow:
-    0 4px 20px oklch(0.68 0.08 25 / 0.1),
-    0 8px 40px oklch(0.75 0.06 320 / 0.08);
   --navbar-backdrop-blur: 18px;
-
-  /* Rainbow refraction */
   --navbar-border-style: prism;
   --navbar-mobile-pattern: particles;
 }
@@ -367,23 +283,6 @@
    9. COSMIC CANDY (Playful + Dark & Bold)
    ---------------------------------------- */
 [data-vibe="playful"][data-aesthetic="dark-bold"] {
-  --navbar-bg: oklch(0.16 0.10 290);
-  --navbar-text: oklch(0.96 0 0);
-  --navbar-accent: oklch(0.72 0.24 330);
-  --navbar-accent-secondary: oklch(0.80 0.20 85);
-  --navbar-accent-tertiary: oklch(0.70 0.18 195);
-  --navbar-border: oklch(0.72 0.24 330 / 0.4);
-  --navbar-hover-bg: oklch(0.22 0.12 290);
-  --navbar-shadow:
-    0 4px 20px oklch(0.72 0.24 330 / 0.3),
-    0 8px 40px oklch(0.80 0.20 85 / 0.2);
-
-  /* Gradient text on hover */
-  --navbar-hover-gradient: linear-gradient(90deg,
-    oklch(0.72 0.24 330),
-    oklch(0.80 0.20 85),
-    oklch(0.70 0.18 195));
-
   --navbar-mobile-pattern: stars;
 }
 
@@ -391,18 +290,7 @@
    10. COTTON CLOUD (Playful + Light & Airy)
    ---------------------------------------- */
 [data-vibe="playful"][data-aesthetic="light-airy"] {
-  --navbar-bg: oklch(0.995 0.005 280);
-  --navbar-text: oklch(0.35 0.08 290);
-  --navbar-text-muted: oklch(0.55 0.06 290);
-  --navbar-accent: oklch(0.70 0.16 290);
-  --navbar-accent-secondary: oklch(0.78 0.14 210);
-  --navbar-border: oklch(0.92 0.04 290);
-  --navbar-hover-bg: oklch(0.94 0.06 290);
-  --navbar-shadow:
-    0 2px 8px oklch(0.70 0.16 290 / 0.15),
-    0 8px 24px oklch(0.78 0.14 210 / 0.1);
   --navbar-border-radius: 1.5rem;
-
   --navbar-mobile-pattern: clouds;
 }
 
@@ -410,17 +298,6 @@
    11. POP ART (Playful + Brutalist)
    ---------------------------------------- */
 [data-vibe="playful"][data-aesthetic="brutalist"] {
-  --navbar-bg: oklch(0.90 0.18 90);
-  --navbar-text: oklch(0.10 0 0);
-  --navbar-accent: oklch(0.55 0.26 25);
-  --navbar-accent-secondary: oklch(0.52 0.20 250);
-  --navbar-border: oklch(0.10 0 0);
-  --navbar-border-width: 3px;
-  --navbar-hover-bg: oklch(0.55 0.26 25);
-  --navbar-hover-text: oklch(0.98 0 0);
-  --navbar-shadow: 5px 5px 0 oklch(0.10 0 0);
-
-  /* Ben-Day dots */
   --navbar-pattern: dots;
   --navbar-mobile-pattern: halftone;
 }
@@ -429,20 +306,8 @@
    12. BUBBLEGUM DREAM (Playful + Glassmorphism)
    ---------------------------------------- */
 [data-vibe="playful"][data-aesthetic="glass"] {
-  --navbar-bg: oklch(0.88 0.10 340 / 0.7);
-  --navbar-text: oklch(0.25 0.08 340);
-  --navbar-text-muted: oklch(0.45 0.08 340);
-  --navbar-accent: oklch(0.65 0.16 290);
-  --navbar-accent-secondary: oklch(0.78 0.14 170);
-  --navbar-border: oklch(0.92 0.06 340 / 0.5);
-  --navbar-hover-bg: oklch(0.92 0.08 340 / 0.85);
-  --navbar-shadow:
-    0 4px 20px oklch(0.65 0.16 290 / 0.2),
-    0 8px 40px oklch(0.78 0.14 170 / 0.15);
   --navbar-backdrop-blur: 22px;
   --navbar-border-radius: 2rem;
-
-  /* Iridescent shine */
   --navbar-border-style: iridescent;
   --navbar-mobile-pattern: bubbles;
 }
@@ -451,16 +316,6 @@
    13. OBSIDIAN (Minimal + Dark & Bold)
    ---------------------------------------- */
 [data-vibe="minimal"][data-aesthetic="dark-bold"] {
-  --navbar-bg: oklch(0.11 0.01 250);
-  --navbar-text: oklch(0.88 0 0);
-  --navbar-text-muted: oklch(0.52 0.02 250);
-  --navbar-accent: oklch(0.58 0.16 250);
-  --navbar-accent-secondary: oklch(0.65 0.10 180);
-  --navbar-border: oklch(0.20 0.02 250);
-  --navbar-hover-bg: oklch(0.15 0.02 250);
-  --navbar-shadow: none;
-
-  /* Single pixel accent line */
   --navbar-border-style: pixel-line;
   --navbar-mobile-pattern: minimal-dark;
 }
@@ -469,16 +324,7 @@
    14. PAPER WHITE (Minimal + Light & Airy)
    ---------------------------------------- */
 [data-vibe="minimal"][data-aesthetic="light-airy"] {
-  --navbar-bg: oklch(0.998 0 0);
-  --navbar-text: oklch(0.18 0.02 250);
-  --navbar-text-muted: oklch(0.55 0.02 250);
-  --navbar-accent: oklch(0.48 0.12 250);
-  --navbar-accent-secondary: oklch(0.55 0.08 180);
-  --navbar-border: oklch(0.94 0.01 250);
-  --navbar-hover-bg: oklch(0.96 0.01 250);
-  --navbar-shadow: 0 1px 2px oklch(0 0 0 / 0.04);
   --navbar-border-radius: 0.5rem;
-
   --navbar-mobile-pattern: minimal-light;
 }
 
@@ -486,21 +332,10 @@
    15. BLUEPRINT (Minimal + Brutalist)
    ---------------------------------------- */
 [data-vibe="minimal"][data-aesthetic="brutalist"] {
-  --navbar-bg: oklch(0.45 0.12 250);
-  --navbar-text: oklch(0.98 0 0);
-  --navbar-text-muted: oklch(0.80 0.04 250);
-  --navbar-accent: oklch(0.98 0 0);
-  --navbar-border: oklch(0.98 0 0);
   --navbar-border-width: 1px;
-  --navbar-hover-bg: oklch(0.98 0 0);
-  --navbar-hover-text: oklch(0.45 0.12 250);
-  --navbar-shadow: none;
-
   /* Technical/monospace */
   --navbar-logo-font-family: 'JetBrains Mono', 'Fira Code', monospace;
   --navbar-font-family: 'Inter', system-ui, sans-serif;
-
-  /* Grid lines */
   --navbar-pattern: grid;
   --navbar-mobile-pattern: blueprint-grid;
 }
@@ -509,19 +344,8 @@
    16. FROSTED STEEL (Minimal + Glassmorphism)
    ---------------------------------------- */
 [data-vibe="minimal"][data-aesthetic="glass"] {
-  --navbar-bg: oklch(0.92 0.01 250 / 0.8);
-  --navbar-text: oklch(0.22 0.02 250);
-  --navbar-text-muted: oklch(0.48 0.02 250);
-  --navbar-accent: oklch(0.50 0.10 250);
-  --navbar-accent-secondary: oklch(0.58 0.06 200);
-  --navbar-border: oklch(0.85 0.02 250 / 0.5);
-  --navbar-hover-bg: oklch(0.95 0.01 250 / 0.9);
-  --navbar-shadow:
-    0 2px 8px oklch(0 0 0 / 0.04),
-    0 4px 16px oklch(0 0 0 / 0.03);
   --navbar-backdrop-blur: 16px;
   --navbar-border-radius: 0.75rem;
-
   --navbar-mobile-pattern: frosted;
 }
 
