@@ -1,0 +1,827 @@
+/* ============================================
+   SONIC BEFF - 16 NAVBAR VARIANTS
+   4 Vibes × 4 Aesthetics = 16 Unique Designs
+   ============================================ */
+
+/* ============================================
+   BASE NAVBAR VARIABLES
+   ============================================ */
+:root {
+  /* Structure */
+  --navbar-height: 4.5rem;
+  --navbar-padding-x: 2rem;
+  --navbar-gap: 2rem;
+
+  /* Typography - defaults */
+  --navbar-font-family: var(--font-sans);
+  --navbar-font-weight: 500;
+  --navbar-letter-spacing: 0em;
+  --navbar-text-transform: none;
+  --navbar-font-size: 0.9375rem;
+
+  /* Logo */
+  --navbar-logo-font-family: var(--font-sans);
+  --navbar-logo-font-weight: 700;
+  --navbar-logo-font-size: 1.5rem;
+  --navbar-logo-letter-spacing: -0.02em;
+
+  /* Colors - defaults */
+  --navbar-bg: transparent;
+  --navbar-bg-opacity: 1;
+  --navbar-border: transparent;
+  --navbar-border-width: 1px;
+  --navbar-text: var(--foreground);
+  --navbar-text-muted: oklch(0.55 0.02 250);
+  --navbar-text-hover: var(--foreground);
+  --navbar-accent: var(--primary);
+  --navbar-accent-secondary: var(--primary);
+  --navbar-hover-bg: oklch(0.95 0.01 250);
+
+  /* Effects - defaults */
+  --navbar-shadow: none;
+  --navbar-backdrop-blur: 0px;
+  --navbar-backdrop-saturate: 1;
+  --navbar-border-radius: 0;
+  --navbar-transition-duration: 200ms;
+  --navbar-transition-timing: ease-out;
+
+  /* Mobile overlay */
+  --navbar-mobile-bg: var(--navbar-bg);
+  --navbar-mobile-pattern: none;
+}
+
+/* ============================================
+   VIBE: ACTION / EXTREME SPORTS
+   Bold, aggressive, high-energy
+   ============================================ */
+[data-vibe="action"] {
+  --navbar-font-family: 'Anton', 'Oswald', sans-serif;
+  --navbar-font-weight: 400;
+  --navbar-letter-spacing: 0.08em;
+  --navbar-text-transform: uppercase;
+  --navbar-font-size: 0.875rem;
+
+  --navbar-logo-font-family: 'Bebas Neue', 'Anton', sans-serif;
+  --navbar-logo-font-weight: 400;
+  --navbar-logo-font-size: 2rem;
+  --navbar-logo-letter-spacing: 0.12em;
+
+  --navbar-accent: oklch(0.65 0.27 29);
+  --navbar-accent-secondary: oklch(0.75 0.22 55);
+}
+
+/* ============================================
+   VIBE: PREMIUM / LUXURY
+   Refined, sophisticated, understated
+   ============================================ */
+[data-vibe="premium"] {
+  --navbar-font-family: 'Lato', 'Montserrat', sans-serif;
+  --navbar-font-weight: 300;
+  --navbar-letter-spacing: 0.18em;
+  --navbar-text-transform: uppercase;
+  --navbar-font-size: 0.75rem;
+
+  --navbar-logo-font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  --navbar-logo-font-weight: 400;
+  --navbar-logo-font-size: 1.75rem;
+  --navbar-logo-letter-spacing: 0.08em;
+
+  --navbar-accent: oklch(0.72 0.09 75);
+  --navbar-accent-secondary: oklch(0.40 0.08 320);
+}
+
+/* ============================================
+   VIBE: PLAYFUL / FUN
+   Vibrant, youthful, approachable
+   ============================================ */
+[data-vibe="playful"] {
+  --navbar-font-family: 'Nunito', 'Quicksand', sans-serif;
+  --navbar-font-weight: 700;
+  --navbar-letter-spacing: 0.02em;
+  --navbar-text-transform: none;
+  --navbar-font-size: 0.9375rem;
+
+  --navbar-logo-font-family: 'Fredoka', 'Nunito', sans-serif;
+  --navbar-logo-font-weight: 600;
+  --navbar-logo-font-size: 1.875rem;
+  --navbar-logo-letter-spacing: -0.01em;
+
+  --navbar-accent: oklch(0.68 0.24 330);
+  --navbar-accent-secondary: oklch(0.72 0.18 195);
+}
+
+/* ============================================
+   VIBE: MINIMAL / MODERN TECH
+   Sleek, precise, cutting-edge
+   ============================================ */
+[data-vibe="minimal"] {
+  --navbar-font-family: 'Inter', system-ui, sans-serif;
+  --navbar-font-weight: 450;
+  --navbar-letter-spacing: -0.01em;
+  --navbar-text-transform: none;
+  --navbar-font-size: 0.875rem;
+
+  --navbar-logo-font-family: 'Inter', system-ui, sans-serif;
+  --navbar-logo-font-weight: 600;
+  --navbar-logo-font-size: 1.25rem;
+  --navbar-logo-letter-spacing: -0.03em;
+
+  --navbar-accent: oklch(0.60 0.18 250);
+  --navbar-accent-secondary: oklch(0.70 0.12 175);
+}
+
+/* ============================================
+   AESTHETIC: DARK & BOLD
+   Dramatic, high-contrast, powerful
+   ============================================ */
+[data-aesthetic="dark-bold"] {
+  --navbar-bg: oklch(0.12 0.02 280);
+  --navbar-bg-opacity: 0.98;
+  --navbar-border: oklch(0.22 0.03 280);
+  --navbar-border-width: 1px;
+  --navbar-text: oklch(0.96 0 0);
+  --navbar-text-muted: oklch(0.60 0.02 280);
+  --navbar-hover-bg: oklch(0.18 0.03 280);
+  --navbar-shadow: 0 4px 24px oklch(0 0 0 / 0.4);
+  --navbar-border-radius: 0;
+  --navbar-transition-duration: 150ms;
+  --navbar-transition-timing: ease-out;
+}
+
+/* ============================================
+   AESTHETIC: LIGHT & AIRY
+   Bright, open, subtle depth
+   ============================================ */
+[data-aesthetic="light-airy"] {
+  --navbar-bg: oklch(0.995 0.002 250);
+  --navbar-bg-opacity: 0.95;
+  --navbar-border: oklch(0.92 0.01 250);
+  --navbar-border-width: 1px;
+  --navbar-text: oklch(0.22 0.02 280);
+  --navbar-text-muted: oklch(0.50 0.02 280);
+  --navbar-hover-bg: oklch(0.96 0.01 250);
+  --navbar-shadow:
+    0 1px 2px oklch(0 0 0 / 0.03),
+    0 4px 12px oklch(0 0 0 / 0.04),
+    0 8px 24px oklch(0 0 0 / 0.03);
+  --navbar-border-radius: 0.75rem;
+  --navbar-transition-duration: 250ms;
+  --navbar-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   AESTHETIC: BRUTALIST / RAW
+   Stark, unconventional, bold
+   ============================================ */
+[data-aesthetic="brutalist"] {
+  --navbar-bg: oklch(0.97 0.01 85);
+  --navbar-bg-opacity: 1;
+  --navbar-border: oklch(0.12 0 0);
+  --navbar-border-width: 3px;
+  --navbar-text: oklch(0.10 0 0);
+  --navbar-text-muted: oklch(0.35 0 0);
+  --navbar-hover-bg: oklch(0.88 0.12 60);
+  --navbar-shadow: 6px 6px 0 oklch(0.12 0 0);
+  --navbar-border-radius: 0;
+  --navbar-transition-duration: 0ms;
+  --navbar-transition-timing: step-end;
+}
+
+/* ============================================
+   AESTHETIC: GLASSMORPHISM
+   Frosted, layered, depth
+   ============================================ */
+[data-aesthetic="glass"] {
+  --navbar-bg: oklch(0.97 0.01 250 / 0.75);
+  --navbar-bg-opacity: 0.75;
+  --navbar-border: oklch(0.92 0.01 250 / 0.5);
+  --navbar-border-width: 1px;
+  --navbar-text: oklch(0.20 0.02 280);
+  --navbar-text-muted: oklch(0.45 0.02 280);
+  --navbar-hover-bg: oklch(0.98 0.01 250 / 0.9);
+  --navbar-shadow:
+    0 4px 16px oklch(0 0 0 / 0.06),
+    0 8px 32px oklch(0 0 0 / 0.04);
+  --navbar-backdrop-blur: 20px;
+  --navbar-backdrop-saturate: 1.4;
+  --navbar-border-radius: 1rem;
+  --navbar-transition-duration: 300ms;
+  --navbar-transition-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   COMBINED VARIANTS - THE 16 UNIQUE DESIGNS
+   ============================================ */
+
+/* ----------------------------------------
+   1. MIDNIGHT THUNDER (Action + Dark & Bold)
+   ---------------------------------------- */
+[data-vibe="action"][data-aesthetic="dark-bold"] {
+  --navbar-bg: oklch(0.10 0.04 15);
+  --navbar-text: oklch(0.98 0 0);
+  --navbar-accent: oklch(0.65 0.28 30);
+  --navbar-accent-secondary: oklch(0.58 0.24 340);
+  --navbar-border: linear-gradient(90deg, oklch(0.65 0.28 30), oklch(0.58 0.24 340));
+  --navbar-hover-bg: oklch(0.16 0.06 25);
+  --navbar-shadow:
+    0 4px 20px oklch(0.65 0.28 30 / 0.25),
+    0 0 40px oklch(0.65 0.28 30 / 0.1);
+
+  /* Special: gradient border bottom */
+  --navbar-border-style: gradient;
+  --navbar-mobile-pattern: diagonal-stripes-orange;
+}
+
+/* ----------------------------------------
+   2. WHITE LIGHTNING (Action + Light & Airy)
+   ---------------------------------------- */
+[data-vibe="action"][data-aesthetic="light-airy"] {
+  --navbar-bg: oklch(0.995 0 0);
+  --navbar-text: oklch(0.15 0.03 250);
+  --navbar-accent: oklch(0.52 0.22 250);
+  --navbar-accent-secondary: oklch(0.68 0.22 145);
+  --navbar-hover-bg: oklch(0.52 0.22 250);
+  --navbar-hover-text: oklch(0.99 0 0);
+  --navbar-shadow:
+    0 2px 8px oklch(0.52 0.22 250 / 0.12),
+    0 8px 24px oklch(0.52 0.22 250 / 0.08);
+  --navbar-border-radius: 0;
+
+  --navbar-mobile-pattern: geometric-blue;
+}
+
+/* ----------------------------------------
+   3. RAW POWER (Action + Brutalist)
+   ---------------------------------------- */
+[data-vibe="action"][data-aesthetic="brutalist"] {
+  --navbar-bg: oklch(0.94 0.02 85);
+  --navbar-text: oklch(0.08 0 0);
+  --navbar-accent: oklch(0.58 0.26 30);
+  --navbar-border: oklch(0.08 0 0);
+  --navbar-border-width: 4px;
+  --navbar-hover-bg: oklch(0.08 0 0);
+  --navbar-hover-text: oklch(0.94 0.02 85);
+  --navbar-shadow: 8px 8px 0 oklch(0.08 0 0);
+
+  --navbar-mobile-pattern: industrial-grid;
+}
+
+/* ----------------------------------------
+   4. NEON HAZE (Action + Glassmorphism)
+   ---------------------------------------- */
+[data-vibe="action"][data-aesthetic="glass"] {
+  --navbar-bg: oklch(0.14 0.08 285 / 0.65);
+  --navbar-text: oklch(0.95 0 0);
+  --navbar-text-muted: oklch(0.70 0.05 285);
+  --navbar-accent: oklch(0.75 0.22 175);
+  --navbar-accent-secondary: oklch(0.70 0.22 330);
+  --navbar-border: oklch(0.70 0.18 200 / 0.4);
+  --navbar-hover-bg: oklch(0.20 0.10 285 / 0.8);
+  --navbar-shadow:
+    0 0 30px oklch(0.75 0.22 175 / 0.3),
+    0 0 60px oklch(0.70 0.22 330 / 0.2);
+  --navbar-backdrop-blur: 24px;
+
+  --navbar-mobile-pattern: neon-grid;
+}
+
+/* ----------------------------------------
+   5. BLACK TIE (Premium + Dark & Bold)
+   ---------------------------------------- */
+[data-vibe="premium"][data-aesthetic="dark-bold"] {
+  --navbar-bg: oklch(0.08 0.01 285);
+  --navbar-text: oklch(0.92 0.02 85);
+  --navbar-text-muted: oklch(0.55 0.03 85);
+  --navbar-accent: oklch(0.75 0.08 85);
+  --navbar-accent-secondary: oklch(0.38 0.06 320);
+  --navbar-border: oklch(0.75 0.08 85 / 0.3);
+  --navbar-hover-bg: transparent;
+  --navbar-shadow: none;
+
+  /* Thin gold line only */
+  --navbar-border-style: gold-line;
+  --navbar-mobile-pattern: velvet-black;
+}
+
+/* ----------------------------------------
+   6. IVORY SUITE (Premium + Light & Airy)
+   ---------------------------------------- */
+[data-vibe="premium"][data-aesthetic="light-airy"] {
+  --navbar-bg: oklch(0.98 0.01 75);
+  --navbar-text: oklch(0.28 0.04 55);
+  --navbar-text-muted: oklch(0.52 0.04 55);
+  --navbar-accent: oklch(0.48 0.08 55);
+  --navbar-accent-secondary: oklch(0.58 0.10 30);
+  --navbar-border: oklch(0.90 0.02 75);
+  --navbar-hover-bg: oklch(0.95 0.02 75);
+  --navbar-shadow:
+    0 1px 1px oklch(0.48 0.08 55 / 0.05),
+    0 4px 16px oklch(0.48 0.08 55 / 0.04);
+
+  --navbar-mobile-pattern: fine-lines;
+}
+
+/* ----------------------------------------
+   7. AVANT-GARDE (Premium + Brutalist)
+   ---------------------------------------- */
+[data-vibe="premium"][data-aesthetic="brutalist"] {
+  --navbar-bg: oklch(0.99 0 0);
+  --navbar-text: oklch(0.10 0 0);
+  --navbar-accent: oklch(0.42 0.14 285);
+  --navbar-border: oklch(0.10 0 0);
+  --navbar-border-width: 2px;
+  --navbar-hover-bg: oklch(0.42 0.14 285);
+  --navbar-hover-text: oklch(0.99 0 0);
+  --navbar-shadow: 4px 4px 0 oklch(0.10 0 0);
+
+  /* Mixed typography creates tension */
+  --navbar-logo-font-family: 'Cormorant Garamond', serif;
+  --navbar-font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  --navbar-font-weight: 700;
+
+  --navbar-mobile-pattern: bw-split;
+}
+
+/* ----------------------------------------
+   8. CRYSTAL PALACE (Premium + Glassmorphism)
+   ---------------------------------------- */
+[data-vibe="premium"][data-aesthetic="glass"] {
+  --navbar-bg: oklch(0.96 0.02 290 / 0.65);
+  --navbar-text: oklch(0.25 0.04 290);
+  --navbar-text-muted: oklch(0.48 0.04 290);
+  --navbar-accent: oklch(0.68 0.08 25);
+  --navbar-accent-secondary: oklch(0.75 0.06 320);
+  --navbar-border: oklch(0.88 0.03 290 / 0.5);
+  --navbar-hover-bg: oklch(0.98 0.02 290 / 0.85);
+  --navbar-shadow:
+    0 4px 20px oklch(0.68 0.08 25 / 0.1),
+    0 8px 40px oklch(0.75 0.06 320 / 0.08);
+  --navbar-backdrop-blur: 18px;
+
+  /* Rainbow refraction */
+  --navbar-border-style: prism;
+  --navbar-mobile-pattern: particles;
+}
+
+/* ----------------------------------------
+   9. COSMIC CANDY (Playful + Dark & Bold)
+   ---------------------------------------- */
+[data-vibe="playful"][data-aesthetic="dark-bold"] {
+  --navbar-bg: oklch(0.16 0.10 290);
+  --navbar-text: oklch(0.96 0 0);
+  --navbar-accent: oklch(0.72 0.24 330);
+  --navbar-accent-secondary: oklch(0.80 0.20 85);
+  --navbar-accent-tertiary: oklch(0.70 0.18 195);
+  --navbar-border: oklch(0.72 0.24 330 / 0.4);
+  --navbar-hover-bg: oklch(0.22 0.12 290);
+  --navbar-shadow:
+    0 4px 20px oklch(0.72 0.24 330 / 0.3),
+    0 8px 40px oklch(0.80 0.20 85 / 0.2);
+
+  /* Gradient text on hover */
+  --navbar-hover-gradient: linear-gradient(90deg,
+    oklch(0.72 0.24 330),
+    oklch(0.80 0.20 85),
+    oklch(0.70 0.18 195));
+
+  --navbar-mobile-pattern: stars;
+}
+
+/* ----------------------------------------
+   10. COTTON CLOUD (Playful + Light & Airy)
+   ---------------------------------------- */
+[data-vibe="playful"][data-aesthetic="light-airy"] {
+  --navbar-bg: oklch(0.995 0.005 280);
+  --navbar-text: oklch(0.35 0.08 290);
+  --navbar-text-muted: oklch(0.55 0.06 290);
+  --navbar-accent: oklch(0.70 0.16 290);
+  --navbar-accent-secondary: oklch(0.78 0.14 210);
+  --navbar-border: oklch(0.92 0.04 290);
+  --navbar-hover-bg: oklch(0.94 0.06 290);
+  --navbar-shadow:
+    0 2px 8px oklch(0.70 0.16 290 / 0.15),
+    0 8px 24px oklch(0.78 0.14 210 / 0.1);
+  --navbar-border-radius: 1.5rem;
+
+  --navbar-mobile-pattern: clouds;
+}
+
+/* ----------------------------------------
+   11. POP ART (Playful + Brutalist)
+   ---------------------------------------- */
+[data-vibe="playful"][data-aesthetic="brutalist"] {
+  --navbar-bg: oklch(0.90 0.18 90);
+  --navbar-text: oklch(0.10 0 0);
+  --navbar-accent: oklch(0.55 0.26 25);
+  --navbar-accent-secondary: oklch(0.52 0.20 250);
+  --navbar-border: oklch(0.10 0 0);
+  --navbar-border-width: 3px;
+  --navbar-hover-bg: oklch(0.55 0.26 25);
+  --navbar-hover-text: oklch(0.98 0 0);
+  --navbar-shadow: 5px 5px 0 oklch(0.10 0 0);
+
+  /* Ben-Day dots */
+  --navbar-pattern: dots;
+  --navbar-mobile-pattern: halftone;
+}
+
+/* ----------------------------------------
+   12. BUBBLEGUM DREAM (Playful + Glassmorphism)
+   ---------------------------------------- */
+[data-vibe="playful"][data-aesthetic="glass"] {
+  --navbar-bg: oklch(0.88 0.10 340 / 0.7);
+  --navbar-text: oklch(0.25 0.08 340);
+  --navbar-text-muted: oklch(0.45 0.08 340);
+  --navbar-accent: oklch(0.65 0.16 290);
+  --navbar-accent-secondary: oklch(0.78 0.14 170);
+  --navbar-border: oklch(0.92 0.06 340 / 0.5);
+  --navbar-hover-bg: oklch(0.92 0.08 340 / 0.85);
+  --navbar-shadow:
+    0 4px 20px oklch(0.65 0.16 290 / 0.2),
+    0 8px 40px oklch(0.78 0.14 170 / 0.15);
+  --navbar-backdrop-blur: 22px;
+  --navbar-border-radius: 2rem;
+
+  /* Iridescent shine */
+  --navbar-border-style: iridescent;
+  --navbar-mobile-pattern: bubbles;
+}
+
+/* ----------------------------------------
+   13. OBSIDIAN (Minimal + Dark & Bold)
+   ---------------------------------------- */
+[data-vibe="minimal"][data-aesthetic="dark-bold"] {
+  --navbar-bg: oklch(0.11 0.01 250);
+  --navbar-text: oklch(0.88 0 0);
+  --navbar-text-muted: oklch(0.52 0.02 250);
+  --navbar-accent: oklch(0.58 0.16 250);
+  --navbar-accent-secondary: oklch(0.65 0.10 180);
+  --navbar-border: oklch(0.20 0.02 250);
+  --navbar-hover-bg: oklch(0.15 0.02 250);
+  --navbar-shadow: none;
+
+  /* Single pixel accent line */
+  --navbar-border-style: pixel-line;
+  --navbar-mobile-pattern: minimal-dark;
+}
+
+/* ----------------------------------------
+   14. PAPER WHITE (Minimal + Light & Airy)
+   ---------------------------------------- */
+[data-vibe="minimal"][data-aesthetic="light-airy"] {
+  --navbar-bg: oklch(0.998 0 0);
+  --navbar-text: oklch(0.18 0.02 250);
+  --navbar-text-muted: oklch(0.55 0.02 250);
+  --navbar-accent: oklch(0.48 0.12 250);
+  --navbar-accent-secondary: oklch(0.55 0.08 180);
+  --navbar-border: oklch(0.94 0.01 250);
+  --navbar-hover-bg: oklch(0.96 0.01 250);
+  --navbar-shadow: 0 1px 2px oklch(0 0 0 / 0.04);
+  --navbar-border-radius: 0.5rem;
+
+  --navbar-mobile-pattern: minimal-light;
+}
+
+/* ----------------------------------------
+   15. BLUEPRINT (Minimal + Brutalist)
+   ---------------------------------------- */
+[data-vibe="minimal"][data-aesthetic="brutalist"] {
+  --navbar-bg: oklch(0.45 0.12 250);
+  --navbar-text: oklch(0.98 0 0);
+  --navbar-text-muted: oklch(0.80 0.04 250);
+  --navbar-accent: oklch(0.98 0 0);
+  --navbar-border: oklch(0.98 0 0);
+  --navbar-border-width: 1px;
+  --navbar-hover-bg: oklch(0.98 0 0);
+  --navbar-hover-text: oklch(0.45 0.12 250);
+  --navbar-shadow: none;
+
+  /* Technical/monospace */
+  --navbar-logo-font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  --navbar-font-family: 'Inter', system-ui, sans-serif;
+
+  /* Grid lines */
+  --navbar-pattern: grid;
+  --navbar-mobile-pattern: blueprint-grid;
+}
+
+/* ----------------------------------------
+   16. FROSTED STEEL (Minimal + Glassmorphism)
+   ---------------------------------------- */
+[data-vibe="minimal"][data-aesthetic="glass"] {
+  --navbar-bg: oklch(0.92 0.01 250 / 0.8);
+  --navbar-text: oklch(0.22 0.02 250);
+  --navbar-text-muted: oklch(0.48 0.02 250);
+  --navbar-accent: oklch(0.50 0.10 250);
+  --navbar-accent-secondary: oklch(0.58 0.06 200);
+  --navbar-border: oklch(0.85 0.02 250 / 0.5);
+  --navbar-hover-bg: oklch(0.95 0.01 250 / 0.9);
+  --navbar-shadow:
+    0 2px 8px oklch(0 0 0 / 0.04),
+    0 4px 16px oklch(0 0 0 / 0.03);
+  --navbar-backdrop-blur: 16px;
+  --navbar-border-radius: 0.75rem;
+
+  --navbar-mobile-pattern: frosted;
+}
+
+/* ============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+/* Logo Animations */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes lightning-underline {
+  0% { width: 0; left: 50%; }
+  50% { width: 100%; left: 0; }
+  100% { width: 0; left: 50%; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+
+@keyframes rgb-shift {
+  0%, 100% { text-shadow: -1px 0 oklch(0.70 0.22 330), 1px 0 oklch(0.75 0.22 175); }
+  50% { text-shadow: 1px 0 oklch(0.70 0.22 330), -1px 0 oklch(0.75 0.22 175); }
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+@keyframes rainbow-shimmer {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes iridescent {
+  0%, 100% {
+    border-color: oklch(0.72 0.24 330 / 0.5);
+    box-shadow: 0 0 20px oklch(0.72 0.24 330 / 0.2);
+  }
+  33% {
+    border-color: oklch(0.80 0.20 85 / 0.5);
+    box-shadow: 0 0 20px oklch(0.80 0.20 85 / 0.2);
+  }
+  66% {
+    border-color: oklch(0.70 0.18 195 / 0.5);
+    box-shadow: 0 0 20px oklch(0.70 0.18 195 / 0.2);
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 5px var(--navbar-accent),
+      0 0 10px var(--navbar-accent),
+      0 0 20px var(--navbar-accent);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--navbar-accent),
+      0 0 20px var(--navbar-accent),
+      0 0 40px var(--navbar-accent);
+  }
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.02); }
+}
+
+@keyframes metallic-sheen {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Mobile Menu Animations */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-up-bounce {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blur-expand {
+  from {
+    backdrop-filter: blur(0);
+    opacity: 0;
+  }
+  to {
+    backdrop-filter: blur(var(--navbar-backdrop-blur));
+    opacity: 1;
+  }
+}
+
+@keyframes spring-in {
+  0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+  60% { transform: scale(1.05) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================
+   MOBILE PATTERNS
+   ============================================ */
+
+.mobile-pattern-diagonal-stripes-orange {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      oklch(0.65 0.28 30 / 0.1),
+      oklch(0.65 0.28 30 / 0.1) 2px,
+      transparent 2px,
+      transparent 12px
+    );
+}
+
+.mobile-pattern-geometric-blue {
+  background:
+    radial-gradient(circle at 20% 80%, oklch(0.52 0.22 250 / 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, oklch(0.68 0.22 145 / 0.1) 0%, transparent 50%);
+}
+
+.mobile-pattern-industrial-grid {
+  background-image:
+    linear-gradient(oklch(0.08 0 0 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.08 0 0 / 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.mobile-pattern-neon-grid {
+  background-image:
+    linear-gradient(oklch(0.75 0.22 175 / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.70 0.22 330 / 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.mobile-pattern-stars {
+  background:
+    radial-gradient(1px 1px at 20px 30px, oklch(0.98 0 0), transparent),
+    radial-gradient(1px 1px at 40px 70px, oklch(0.72 0.24 330), transparent),
+    radial-gradient(1px 1px at 50px 160px, oklch(0.80 0.20 85), transparent),
+    radial-gradient(1px 1px at 90px 40px, oklch(0.70 0.18 195), transparent),
+    radial-gradient(1px 1px at 130px 80px, oklch(0.98 0 0), transparent),
+    radial-gradient(2px 2px at 160px 30px, oklch(0.72 0.24 330), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.mobile-pattern-clouds {
+  background:
+    radial-gradient(ellipse 80px 60px at 30% 20%, oklch(0.96 0.04 290 / 0.6), transparent),
+    radial-gradient(ellipse 100px 70px at 70% 60%, oklch(0.94 0.05 210 / 0.5), transparent),
+    radial-gradient(ellipse 60px 50px at 50% 80%, oklch(0.95 0.04 290 / 0.4), transparent);
+}
+
+.mobile-pattern-halftone {
+  background-image: radial-gradient(oklch(0.10 0 0) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.mobile-pattern-bubbles {
+  background:
+    radial-gradient(circle 40px at 20% 30%, oklch(0.85 0.12 290 / 0.4), transparent),
+    radial-gradient(circle 60px at 80% 60%, oklch(0.80 0.10 170 / 0.3), transparent),
+    radial-gradient(circle 30px at 50% 80%, oklch(0.88 0.08 340 / 0.35), transparent),
+    radial-gradient(circle 50px at 10% 70%, oklch(0.82 0.12 290 / 0.25), transparent);
+}
+
+.mobile-pattern-blueprint-grid {
+  background-image:
+    linear-gradient(oklch(0.98 0 0 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.98 0 0 / 0.1) 1px, transparent 1px),
+    linear-gradient(oklch(0.98 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.98 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+}
+
+.mobile-pattern-frosted {
+  background: linear-gradient(135deg,
+    oklch(0.95 0.01 250 / 0.9) 0%,
+    oklch(0.92 0.02 250 / 0.85) 50%,
+    oklch(0.94 0.01 250 / 0.9) 100%
+  );
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.navbar-gradient-border {
+  position: relative;
+}
+
+.navbar-gradient-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--navbar-accent),
+    var(--navbar-accent-secondary)
+  );
+}
+
+.navbar-gold-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--navbar-accent);
+  opacity: 0.5;
+}
+
+.navbar-pixel-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: var(--navbar-accent);
+}
+
+.navbar-prism-border {
+  position: relative;
+}
+
+.navbar-prism-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    oklch(0.70 0.15 0 / 0.3),
+    oklch(0.70 0.15 60 / 0.3),
+    oklch(0.70 0.15 120 / 0.3),
+    oklch(0.70 0.15 180 / 0.3),
+    oklch(0.70 0.15 240 / 0.3),
+    oklch(0.70 0.15 300 / 0.3),
+    oklch(0.70 0.15 0 / 0.3)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rainbow-shimmer 8s linear infinite;
+}
+
+/* Ben-Day dots pattern for Pop Art */
+.navbar-dots-pattern {
+  background-image: radial-gradient(
+    oklch(0.10 0 0 / 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 6px 6px;
+}
+
+/* Grid pattern for Blueprint */
+.navbar-grid-pattern {
+  background-image:
+    linear-gradient(oklch(0.98 0 0 / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.98 0 0 / 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

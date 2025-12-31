@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom"
+
+import { Header, NavbarVariantSwitcher } from "@/components/navbar"
+
 import { Footer } from "./Footer"
-import { Header } from "./Header"
 
 export function MainLayout() {
   return (
@@ -10,6 +12,7 @@ export function MainLayout() {
         <Outlet />
       </main>
       <Footer />
+      <NavbarVariantSwitcher />
     </div>
   )
 }
