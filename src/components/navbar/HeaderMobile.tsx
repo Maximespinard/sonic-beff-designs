@@ -8,7 +8,6 @@ import { ChevronDown, Menu, Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
-import { useNavbarVariant } from '@/hooks/useNavbarVariant'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -30,17 +29,12 @@ const NAV_LINKS = [
 
 // Mobile menu trigger button
 function MobileMenuTrigger({ onClick }: { onClick: () => void }) {
-  const { aesthetic } = useNavbarVariant()
-
   return (
     <Button
       variant="ghost"
       size="icon"
       onClick={onClick}
-      className={cn(
-        'lg:hidden relative',
-        aesthetic === 'brutalist' && 'rounded-none border-2 border-[var(--navbar-border)]'
-      )}
+      className="lg:hidden relative"
       style={{ color: 'var(--navbar-text)' }}
     >
       <Menu className="h-6 w-6" />
@@ -69,90 +63,18 @@ function MobileLogo({ onClick }: { onClick: () => void }) {
   )
 }
 
-// Get animation variants based on aesthetic
-function getAnimationVariants(aesthetic: string) {
-  // Overlay animations
-  const overlayVariants = {
-    'dark-bold': {
-      initial: { opacity: 0, scale: 0.95 },
-      animate: { opacity: 1, scale: 1 },
-      exit: { opacity: 0, scale: 0.95 },
-      transition: { duration: 0.2, ease: 'easeOut' as const },
-    },
-    'light-airy': {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
-      transition: { duration: 0.3, ease: 'easeOut' as const },
-    },
-    brutalist: {
-      initial: { opacity: 1 },
-      animate: { opacity: 1 },
-      exit: { opacity: 1 },
-      transition: { duration: 0 },
-    },
-    glass: {
-      initial: { opacity: 0, backdropFilter: 'blur(0px)' },
-      animate: { opacity: 1, backdropFilter: 'blur(var(--navbar-backdrop-blur))' },
-      exit: { opacity: 0, backdropFilter: 'blur(0px)' },
-      transition: { duration: 0.4, ease: 'easeOut' as const },
-    },
-  }
-
-  // Menu item stagger animations
-  const itemVariants = {
-    'dark-bold': {
-      initial: { x: 50, opacity: 0 },
-      animate: { x: 0, opacity: 1 },
-      exit: { x: 50, opacity: 0 },
-    },
-    'light-airy': {
-      initial: { y: 20, opacity: 0 },
-      animate: { y: 0, opacity: 1 },
-      exit: { y: -10, opacity: 0 },
-    },
-    brutalist: {
-      initial: { opacity: 0, width: 0 },
-      animate: { opacity: 1, width: '100%' },
-      exit: { opacity: 0 },
-    },
-    glass: {
-      initial: { y: 30, opacity: 0, filter: 'blur(10px)' },
-      animate: { y: 0, opacity: 1, filter: 'blur(0px)' },
-      exit: { y: -20, opacity: 0, filter: 'blur(10px)' },
-    },
-  }
-
-  return {
-    overlay: overlayVariants[aesthetic as keyof typeof overlayVariants] || overlayVariants['light-airy'],
-    item: itemVariants[aesthetic as keyof typeof itemVariants] || itemVariants['light-airy'],
-  }
+// Static White Lightning (light-airy) animation variants
+const overlayAnimation = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+  transition: { duration: 0.3, ease: 'easeOut' as const },
 }
 
-// Get pattern class based on variant
-function getPatternClass(mobilePattern?: string) {
-  if (!mobilePattern) return ''
-
-  const patternMap: Record<string, string> = {
-    'diagonal-stripes-orange': 'mobile-pattern-diagonal-stripes-orange',
-    'geometric-blue': 'mobile-pattern-geometric-blue',
-    'industrial-grid': 'mobile-pattern-industrial-grid',
-    'neon-grid': 'mobile-pattern-neon-grid',
-    stars: 'mobile-pattern-stars',
-    clouds: 'mobile-pattern-clouds',
-    halftone: 'mobile-pattern-halftone',
-    bubbles: 'mobile-pattern-bubbles',
-    'blueprint-grid': 'mobile-pattern-blueprint-grid',
-    frosted: 'mobile-pattern-frosted',
-    'velvet-black': '',
-    'fine-lines': '',
-    'bw-split': '',
-    particles: '',
-    'minimal-dark': '',
-    'minimal-light': '',
-  }
-
-  return patternMap[mobilePattern] || ''
+const itemAnimation = {
+  initial: { y: 20, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: -10, opacity: 0 },
 }
 
 // Full-screen mobile menu overlay
@@ -163,18 +85,14 @@ function MobileMenuOverlay({
   open: boolean
   onClose: () => void
 }) {
-  const { aesthetic, currentVariant, vibe } = useNavbarVariant()
   const [productsOpen, setProductsOpen] = useState(false)
 
-  const animations = getAnimationVariants(aesthetic)
-  const patternClass = getPatternClass(currentVariant?.effects.mobileEntrance?.includes('grid') ? `${vibe}-grid` : undefined)
-
-  // Container variants for stagger
+  // Container variants for stagger (static light-airy timing)
   const containerVariants = {
     initial: {},
     animate: {
       transition: {
-        staggerChildren: aesthetic === 'brutalist' ? 0.05 : 0.08,
+        staggerChildren: 0.08,
         delayChildren: 0.1,
       },
     },
@@ -194,17 +112,14 @@ function MobileMenuOverlay({
             {/* Overlay */}
             <Dialog.Overlay asChild>
               <motion.div
-                className={cn(
-                  'fixed inset-0 z-50',
-                  patternClass
-                )}
+                className="fixed inset-0 z-50"
                 style={{
                   backgroundColor: 'var(--navbar-bg)',
                 }}
-                initial={animations.overlay.initial}
-                animate={animations.overlay.animate}
-                exit={animations.overlay.exit}
-                transition={animations.overlay.transition}
+                initial={overlayAnimation.initial}
+                animate={overlayAnimation.animate}
+                exit={overlayAnimation.exit}
+                transition={overlayAnimation.transition}
               />
             </Dialog.Overlay>
 
@@ -239,9 +154,6 @@ function MobileMenuOverlay({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className={cn(
-                        aesthetic === 'brutalist' && 'rounded-none border-2 border-[var(--navbar-border)]'
-                      )}
                       style={{ color: 'var(--navbar-text)' }}
                     >
                       <X className="h-6 w-6" />
@@ -261,12 +173,10 @@ function MobileMenuOverlay({
                   {NAV_LINKS.map((link) => (
                     <motion.div
                       key={link.href}
-                      variants={animations.item}
+                      variants={itemAnimation}
                       transition={{
-                        type: aesthetic === 'glass' ? 'spring' : 'tween',
-                        stiffness: 300,
-                        damping: 25,
-                        duration: aesthetic === 'brutalist' ? 0.1 : 0.3,
+                        type: 'tween',
+                        duration: 0.3,
                       }}
                     >
                       {link.children ? (
@@ -274,11 +184,7 @@ function MobileMenuOverlay({
                         <div className="mb-6">
                           <button
                             onClick={() => setProductsOpen(!productsOpen)}
-                            className={cn(
-                              'flex items-center justify-between w-full text-left',
-                              'transition-all py-3',
-                              aesthetic === 'brutalist' && 'border-b-2 border-[var(--navbar-border)]'
-                            )}
+                            className="flex items-center justify-between w-full text-left transition-all py-3"
                             style={{
                               fontFamily: 'var(--navbar-font-family)',
                               fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',
@@ -348,11 +254,7 @@ function MobileMenuOverlay({
                         <Link
                           to={link.href}
                           onClick={onClose}
-                          className={cn(
-                            'block py-3 mb-4 transition-all',
-                            'hover:text-[var(--navbar-accent)] hover:translate-x-2',
-                            aesthetic === 'brutalist' && 'border-b-2 border-[var(--navbar-border)] hover:bg-[var(--navbar-accent)] hover:text-[var(--navbar-bg)] hover:translate-x-0 hover:px-4'
-                          )}
+                          className="block py-3 mb-4 transition-all hover:text-[var(--navbar-accent)] hover:translate-x-2"
                           style={{
                             fontFamily: 'var(--navbar-font-family)',
                             fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',
@@ -385,14 +287,9 @@ function MobileMenuOverlay({
                     <Input
                       type="search"
                       placeholder="Search products..."
-                      className={cn(
-                        'pl-12 py-6 text-lg',
-                        aesthetic === 'brutalist' && 'rounded-none border-2',
-                        aesthetic === 'glass' && 'bg-white/10'
-                      )}
+                      className="pl-12 py-6 text-lg"
                       style={{
                         fontFamily: 'var(--navbar-font-family)',
-                        backgroundColor: aesthetic === 'glass' ? 'var(--navbar-hover-bg)' : undefined,
                         borderColor: 'var(--navbar-border)',
                         color: 'var(--navbar-text)',
                       }}
@@ -403,17 +300,13 @@ function MobileMenuOverlay({
                   <Button
                     asChild
                     size="lg"
-                    className={cn(
-                      'w-full py-6 text-lg',
-                      aesthetic === 'brutalist' && 'rounded-none'
-                    )}
+                    className="w-full py-6 text-lg"
                     style={{
                       backgroundColor: 'var(--navbar-accent)',
-                      color: aesthetic === 'dark-bold' || aesthetic === 'glass' ? 'white' : 'var(--navbar-bg)',
+                      color: 'var(--navbar-bg)',
                       fontFamily: 'var(--navbar-font-family)',
                       letterSpacing: 'var(--navbar-letter-spacing)',
                       textTransform: 'var(--navbar-text-transform)' as React.CSSProperties['textTransform'],
-                      boxShadow: aesthetic === 'brutalist' ? '4px 4px 0 var(--navbar-border)' : undefined,
                     }}
                   >
                     <Link to="/login" onClick={onClose}>

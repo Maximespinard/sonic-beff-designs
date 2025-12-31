@@ -13,45 +13,14 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
-import { useNavbarVariant } from '@/hooks/useNavbarVariant'
 import { cn } from '@/lib/utils'
 
-// Logo component with variant-specific animations
+// Logo component
 function Logo() {
-  const { currentVariant } = useNavbarVariant()
-
-  const getLogoAnimation = () => {
-    if (!currentVariant) return ''
-
-    switch (currentVariant.effects.logoAnimation) {
-      case 'flicker':
-        return 'hover:animate-[flicker_0.5s_ease-in-out]'
-      case 'glitch':
-        return 'hover:animate-[glitch_0.3s_ease-in-out]'
-      case 'rgb-shift':
-        return 'animate-[rgb-shift_2s_ease-in-out_infinite]'
-      case 'gold-shimmer':
-        return 'hover:bg-gradient-to-r hover:from-transparent hover:via-[var(--navbar-accent)] hover:to-transparent hover:bg-[length:200%_100%] hover:animate-[gold-shimmer_1.5s_ease-in-out_infinite] hover:bg-clip-text'
-      case 'wobble':
-        return 'hover:animate-[wobble_0.5s_ease-in-out]'
-      case 'rainbow-shimmer':
-        return 'hover:animate-[rainbow-shimmer_3s_linear_infinite]'
-      case 'weight-shift':
-        return 'transition-all duration-300 hover:font-semibold'
-      case 'metallic-sheen':
-        return 'hover:bg-gradient-to-r hover:from-transparent hover:via-white/20 hover:to-transparent hover:bg-[length:200%_100%] hover:animate-[metallic-sheen_1s_ease-in-out]'
-      default:
-        return ''
-    }
-  }
-
   return (
     <Link
       to="/"
-      className={cn(
-        'flex items-center transition-all',
-        getLogoAnimation()
-      )}
+      className="flex items-center transition-all"
       style={{
         fontFamily: 'var(--navbar-logo-font-family)',
         fontSize: 'var(--navbar-logo-font-size)',
@@ -65,7 +34,7 @@ function Logo() {
   )
 }
 
-// Navigation link with variant-specific hover effects
+// Navigation link with White Lightning hover effect (color-flip)
 function NavLink({
   href,
   children,
@@ -75,55 +44,11 @@ function NavLink({
   children: React.ReactNode
   className?: string
 }) {
-  const { currentVariant } = useNavbarVariant()
-
-  const getHoverClass = () => {
-    if (!currentVariant) return ''
-
-    switch (currentVariant.effects.hoverEffect) {
-      case 'glow-lift':
-        return 'hover:translate-y-[-2px] hover:shadow-[0_4px_12px_var(--navbar-accent)]'
-      case 'color-flip':
-        return 'hover:bg-[var(--navbar-hover-bg)] hover:text-white'
-      case 'invert':
-        return 'hover:bg-[var(--navbar-hover-bg)] hover:text-[var(--navbar-bg)]'
-      case 'neon-pulse':
-        return 'hover:animate-[neon-pulse_1s_ease-in-out_infinite]'
-      case 'gold-underline-expand':
-        return 'relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-[var(--navbar-accent)] after:transition-all hover:after:w-full hover:tracking-[0.25em]'
-      case 'delicate-underline':
-        return 'relative after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-0 after:bg-[var(--navbar-accent)] after:transition-all after:-translate-x-1/2 hover:after:w-full'
-      case 'color-block':
-        return 'hover:bg-[var(--navbar-accent)] hover:text-white transition-none'
-      case 'soft-glow':
-        return 'hover:shadow-[0_0_20px_var(--navbar-accent)] transition-shadow'
-      case 'gradient-text':
-        return 'hover:bg-gradient-to-r hover:from-[var(--navbar-accent)] hover:via-[var(--navbar-accent-secondary)] hover:to-[var(--navbar-accent)] hover:bg-clip-text hover:text-transparent'
-      case 'bounce-color':
-        return 'hover:translate-y-[-3px] hover:text-[var(--navbar-accent)] transition-all'
-      case 'comic-explosion':
-        return 'hover:bg-[var(--navbar-accent)] hover:text-white hover:scale-110 hover:rotate-[-2deg] transition-all'
-      case 'bubble-pop':
-        return 'hover:scale-105 hover:bg-[var(--navbar-hover-bg)] transition-transform'
-      case 'blue-glow':
-        return 'hover:text-[var(--navbar-accent)] hover:drop-shadow-[0_0_8px_var(--navbar-accent)]'
-      case 'underline-grow':
-        return 'relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[var(--navbar-accent)] after:transition-all hover:after:w-full'
-      case 'invert-block':
-        return 'hover:bg-[var(--navbar-accent)] hover:text-[var(--navbar-bg)] px-3 transition-colors'
-      case 'opacity-shift':
-        return 'hover:opacity-70 transition-opacity'
-      default:
-        return 'hover:bg-[var(--navbar-hover-bg)]'
-    }
-  }
-
   return (
     <Link
       to={href}
       className={cn(
-        'px-4 py-2 rounded-sm transition-all',
-        getHoverClass(),
+        'px-4 py-2 rounded-sm transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-white',
         className
       )}
       style={{
@@ -142,32 +67,12 @@ function NavLink({
 
 // Products dropdown with featured section
 function ProductsMenu() {
-  const { currentVariant, aesthetic } = useNavbarVariant()
-
-  const getHoverClass = () => {
-    if (!currentVariant) return ''
-
-    switch (currentVariant.effects.hoverEffect) {
-      case 'glow-lift':
-        return 'hover:translate-y-[-2px] hover:shadow-[0_4px_12px_var(--navbar-accent)]'
-      case 'color-flip':
-        return 'hover:bg-[var(--navbar-hover-bg)] hover:text-white'
-      case 'invert':
-        return 'hover:bg-[var(--navbar-hover-bg)] hover:text-[var(--navbar-bg)]'
-      default:
-        return 'hover:bg-[var(--navbar-hover-bg)]'
-    }
-  }
-
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            className={cn(
-              'px-4 py-2 transition-all bg-transparent',
-              getHoverClass()
-            )}
+            className="px-4 py-2 transition-all bg-transparent hover:bg-[var(--navbar-hover-bg)] hover:text-white"
             style={{
               fontFamily: 'var(--navbar-font-family)',
               fontSize: 'var(--navbar-font-size)',
@@ -184,7 +89,7 @@ function ProductsMenu() {
               className="grid gap-3 p-6 w-[450px] grid-cols-[.75fr_1fr]"
               style={{
                 backgroundColor: 'var(--navbar-bg)',
-                borderRadius: aesthetic === 'brutalist' ? '0' : '0.5rem',
+                borderRadius: '0.5rem',
                 border: `var(--navbar-border-width) solid var(--navbar-border)`,
                 boxShadow: 'var(--navbar-shadow)',
               }}
@@ -194,11 +99,7 @@ function ProductsMenu() {
                 <NavigationMenuLink asChild>
                   <Link
                     to="/shop"
-                    className={cn(
-                      'flex h-full w-full flex-col justify-end rounded-md p-6 no-underline outline-none transition-all',
-                      'bg-gradient-to-b from-[var(--navbar-accent)]/20 to-[var(--navbar-accent)]/40',
-                      getHoverClass()
-                    )}
+                    className="flex h-full w-full flex-col justify-end rounded-md p-6 no-underline outline-none transition-all bg-gradient-to-b from-[var(--navbar-accent)]/20 to-[var(--navbar-accent)]/40 hover:bg-[var(--navbar-hover-bg)] hover:text-white"
                   >
                     <div
                       className="mb-2 mt-4 text-lg"
@@ -229,10 +130,7 @@ function ProductsMenu() {
                 <NavigationMenuLink asChild key={product.href}>
                   <Link
                     to={product.href}
-                    className={cn(
-                      'block select-none rounded-md p-3 leading-none no-underline outline-none transition-all',
-                      getHoverClass()
-                    )}
+                    className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-white"
                   >
                     <div
                       className="text-sm font-medium leading-none mb-1"
@@ -260,7 +158,7 @@ function ProductsMenu() {
                   className="w-full"
                   style={{
                     backgroundColor: 'var(--navbar-accent)',
-                    color: aesthetic === 'dark-bold' || aesthetic === 'glass' ? 'white' : 'var(--navbar-bg)',
+                    color: 'var(--navbar-bg)',
                     fontFamily: 'var(--navbar-font-family)',
                     letterSpacing: 'var(--navbar-letter-spacing)',
                     textTransform: 'var(--navbar-text-transform)' as React.CSSProperties['textTransform'],
@@ -277,10 +175,8 @@ function ProductsMenu() {
   )
 }
 
-// Search input with variant styling
+// Search input
 function SearchInput() {
-  const { aesthetic } = useNavbarVariant()
-
   return (
     <div className="relative">
       <Search
@@ -290,15 +186,10 @@ function SearchInput() {
       <Input
         type="search"
         placeholder="Search..."
-        className={cn(
-          'pl-10 w-56 transition-all',
-          aesthetic === 'brutalist' && 'rounded-none border-2',
-          aesthetic === 'glass' && 'bg-white/10 border-white/20'
-        )}
+        className="pl-10 w-56 transition-all"
         style={{
           fontFamily: 'var(--navbar-font-family)',
           fontSize: 'var(--navbar-font-size)',
-          backgroundColor: aesthetic === 'glass' ? 'var(--navbar-hover-bg)' : undefined,
           borderColor: 'var(--navbar-border)',
           color: 'var(--navbar-text)',
         }}
@@ -309,22 +200,6 @@ function SearchInput() {
 
 // Main desktop header component
 export function HeaderDesktop() {
-  const { currentVariant } = useNavbarVariant()
-
-  const getHoverClass = () => {
-    if (!currentVariant) return ''
-
-    switch (currentVariant.effects.hoverEffect) {
-      case 'invert':
-      case 'color-flip':
-        return 'hover:bg-[var(--navbar-hover-bg)] hover:text-[var(--navbar-bg)]'
-      case 'invert-block':
-        return 'hover:bg-[var(--navbar-accent)] hover:text-[var(--navbar-bg)]'
-      default:
-        return 'hover:bg-[var(--navbar-hover-bg)]'
-    }
-  }
-
   return (
     <div className="hidden lg:flex items-center justify-between w-full">
       {/* Logo */}
@@ -347,7 +222,7 @@ export function HeaderDesktop() {
           asChild
           variant="ghost"
           size="sm"
-          className={cn('transition-all', getHoverClass())}
+          className="transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-[var(--navbar-bg)]"
           style={{
             fontFamily: 'var(--navbar-font-family)',
             fontSize: 'var(--navbar-font-size)',

@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./index.css"
 
-import { NavbarVariantProvider } from "@/components/navbar"
 import { ThemeProvider } from "@/components/theme/ThemeProvider"
 import { MainLayout } from "@/components/layout/MainLayout"
 import { Cart } from "@/pages/Cart"
@@ -69,9 +68,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <NavbarVariantProvider defaultVibe="action" defaultAesthetic="dark-bold">
-        <RouterProvider router={router} />
-      </NavbarVariantProvider>
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>
 )

@@ -1,5 +1,4 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { useNavbarVariant } from '@/hooks/useNavbarVariant'
 
 interface Testimonial {
   id: number
@@ -34,7 +33,6 @@ const TESTIMONIALS: Testimonial[] = [
 ]
 
 export function Testimonials() {
-  const { vibe, aesthetic } = useNavbarVariant()
 
   const QuoteIcon = () => (
     <svg
@@ -49,41 +47,22 @@ export function Testimonials() {
   return (
     <section className="section-spacing bg-muted/30">
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header - White Lightning (Action Vibe) */}
         <div className="text-center mb-12 space-y-4">
           <h2
             className="scroll-reveal opacity-0"
             style={{
               fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: vibe === 'premium' ? 400 : vibe === 'action' ? 800 : 700,
-              fontFamily:
-                vibe === 'action'
-                  ? "'Bebas Neue', 'Anton', sans-serif"
-                  : vibe === 'premium'
-                    ? "'Cormorant Garamond', 'Playfair Display', serif"
-                    : vibe === 'playful'
-                      ? "'Fredoka', 'Nunito', sans-serif"
-                      : "'Inter', system-ui, sans-serif",
-              letterSpacing:
-                vibe === 'action'
-                  ? '0.08em'
-                  : vibe === 'premium'
-                    ? '0.12em'
-                    : '0',
-              textTransform:
-                (vibe === 'action' || vibe === 'premium' ? 'uppercase' : 'none') as React.CSSProperties['textTransform'],
+              fontWeight: 800,
+              fontFamily: "'Bebas Neue', 'Anton', sans-serif",
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase' as React.CSSProperties['textTransform'],
             }}
           >
-            {vibe === 'action' && 'What Champions Say'}
-            {vibe === 'premium' && 'Client Testimonials'}
-            {vibe === 'playful' && 'Happy Customers'}
-            {vibe === 'minimal' && 'Reviews'}
+            What Champions Say
           </h2>
           <p className="scroll-reveal opacity-0 text-muted-foreground text-lg max-w-2xl mx-auto">
-            {vibe === 'action' && 'Hear from those who push their limits with us'}
-            {vibe === 'premium' && 'Trusted by discerning individuals worldwide'}
-            {vibe === 'playful' && 'See what people are loving about us'}
-            {vibe === 'minimal' && 'Customer feedback and experiences'}
+            Hear from those who push their limits with us
           </p>
         </div>
 
@@ -92,37 +71,19 @@ export function Testimonials() {
           {TESTIMONIALS.map((testimonial, index) => (
             <Card
               key={testimonial.id}
-              className={`
-                scroll-reveal opacity-0 overflow-hidden
-                ${aesthetic === 'glass' ? 'backdrop-blur-sm bg-background/80' : ''}
-              `}
+              className="scroll-reveal opacity-0 overflow-hidden"
               style={{
                 animationDelay: `${300 + index * 150}ms`,
-                borderRadius:
-                  aesthetic === 'brutalist'
-                    ? '0'
-                    : vibe === 'playful'
-                      ? '1.5rem'
-                      : 'var(--radius)',
-                border:
-                  aesthetic === 'brutalist'
-                    ? '3px solid var(--foreground)'
-                    : '1px solid var(--border)',
-                boxShadow:
-                  aesthetic === 'brutalist'
-                    ? '8px 8px 0 var(--foreground)'
-                    : aesthetic === 'dark-bold'
-                      ? '0 8px 32px oklch(0 0 0 / 0.2)'
-                      : 'var(--shadow-md)',
+                borderRadius: 'var(--radius)',
+                border: '1px solid var(--border)',
+                boxShadow: 'var(--shadow-md)',
               }}
             >
               <CardContent className="p-6 space-y-4 relative">
                 {/* Quote Icon */}
-                {vibe !== 'minimal' && (
-                  <div className={vibe === 'premium' ? 'mb-4' : ''}>
-                    <QuoteIcon />
-                  </div>
-                )}
+                <div>
+                  <QuoteIcon />
+                </div>
 
                 {/* Rating Stars */}
                 <div className="flex gap-1">
@@ -139,82 +100,36 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p
-                  className="text-foreground leading-relaxed"
-                  style={{
-                    fontSize:
-                      vibe === 'premium' ? '1.125rem' : vibe === 'minimal' ? '0.9375rem' : '1rem',
-                    fontStyle: (vibe === 'premium' ? 'italic' : 'normal') as React.CSSProperties['fontStyle'],
-                    lineHeight: vibe === 'premium' ? 1.8 : 1.6,
-                  }}
-                >
+                <p className="text-foreground leading-relaxed">
                   "{testimonial.quote}"
                 </p>
 
                 {/* Author Info */}
-                <div
-                  className={`
-                    pt-4
-                    ${aesthetic === 'brutalist' ? 'border-t-2 border-foreground' : ''}
-                    ${aesthetic !== 'brutalist' ? 'border-t border-border' : ''}
-                  `}
-                >
-                  <p
-                    className="font-semibold"
-                    style={{
-                      fontSize: vibe === 'minimal' ? '0.875rem' : '1rem',
-                      fontFamily:
-                        vibe === 'premium'
-                          ? "'Cormorant Garamond', 'Playfair Display', serif"
-                          : 'inherit',
-                    }}
-                  >
+                <div className="pt-4 border-t border-border">
+                  <p className="font-semibold">
                     {testimonial.author}
                   </p>
                   <p
                     className="text-sm text-muted-foreground"
                     style={{
-                      fontSize: vibe === 'minimal' ? '0.8125rem' : '0.875rem',
-                      letterSpacing: vibe === 'premium' ? '0.05em' : '0',
-                      textTransform:
-                        (vibe === 'action' || vibe === 'premium' ? 'uppercase' : 'none') as React.CSSProperties['textTransform'],
+                      textTransform: 'uppercase' as React.CSSProperties['textTransform'],
                     }}
                   >
                     {testimonial.role}
                   </p>
                 </div>
-
-                {/* Decorative element for playful glass variant */}
-                {vibe === 'playful' && aesthetic === 'glass' && (
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-primary/10 rounded-full blur-xl" />
-                )}
-
-                {/* Accent line for premium dark-bold */}
-                {vibe === 'premium' && aesthetic === 'dark-bold' && (
-                  <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-                )}
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Trust Badge / Social Proof */}
+        {/* Trust Badge / Social Proof - Action Vibe */}
         <div
           className="text-center mt-12 scroll-reveal opacity-0"
           style={{ animationDelay: '800ms' }}
         >
-          <p
-            className="text-muted-foreground"
-            style={{
-              fontSize: vibe === 'premium' ? '0.875rem' : '1rem',
-              letterSpacing: vibe === 'premium' ? '0.1em' : '0',
-              textTransform: (vibe === 'premium' ? 'uppercase' : 'none') as React.CSSProperties['textTransform'],
-            }}
-          >
-            {vibe === 'action' && 'Trusted by 10,000+ Athletes Worldwide'}
-            {vibe === 'premium' && 'Serving Discerning Clients Since 2020'}
-            {vibe === 'playful' && 'Join 10,000+ Happy Customers'}
-            {vibe === 'minimal' && '10,000+ Satisfied Customers'}
+          <p className="text-muted-foreground">
+            Trusted by 10,000+ Athletes Worldwide
           </p>
         </div>
       </div>
