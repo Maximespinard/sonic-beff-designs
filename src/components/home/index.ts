@@ -1,0 +1,5 @@
+export { BrandStory } from './BrandStory'
+export { CTASection } from './CTASection'
+export { FeaturedProducts } from './FeaturedProducts'
+export { HeroSection } from './HeroSection'
+export { Testimonials } from './Testimonials'
