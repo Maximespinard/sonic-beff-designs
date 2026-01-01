@@ -63,7 +63,7 @@ export function Checkout() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <div className="min-h-screen bg-linear-to-b from-background via-background to-muted/20">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap');
 
@@ -108,7 +108,7 @@ export function Checkout() {
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="checkout-heading text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="checkout-heading text-5xl font-bold mb-3 bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Secure Checkout
           </h1>
           <p className="text-muted-foreground flex items-center justify-center gap-2">
@@ -123,7 +123,7 @@ export function Checkout() {
             {/* Progress Line */}
             <div className="absolute top-5 left-0 right-0 h-0.5 bg-muted -z-10">
               <div
-                className="h-full bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-500"
+                className="h-full bg-linear-to-r from-amber-500 to-amber-600 transition-all duration-500"
                 style={{ width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%` }}
               />
             </div>
@@ -139,7 +139,7 @@ export function Checkout() {
                     className={cn(
                       "w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300",
                       isCompleted &&
-                        "bg-gradient-to-br from-amber-500 to-amber-600 border-amber-500 shadow-lg shadow-amber-500/30",
+                        "bg-linear-to-br from-amber-500 to-amber-600 border-amber-500 shadow-lg shadow-amber-500/30",
                       isCurrent &&
                         "bg-background border-amber-500 shadow-lg shadow-amber-500/20 scale-110",
                       !isCompleted && !isCurrent && "bg-muted border-muted-foreground/20"
@@ -324,10 +324,10 @@ export function Checkout() {
                             Credit / Debit Card
                           </label>
                           <div className="flex gap-2">
-                            <div className="w-10 h-6 bg-gradient-to-br from-blue-600 to-blue-400 rounded flex items-center justify-center text-[10px] font-bold text-white">
+                            <div className="w-10 h-6 bg-linear-to-br from-blue-600 to-blue-400 rounded flex items-center justify-center text-[10px] font-bold text-white">
                               VISA
                             </div>
-                            <div className="w-10 h-6 bg-gradient-to-br from-orange-600 to-orange-400 rounded flex items-center justify-center text-[10px] font-bold text-white">
+                            <div className="w-10 h-6 bg-linear-to-br from-orange-600 to-orange-400 rounded flex items-center justify-center text-[10px] font-bold text-white">
                               MC
                             </div>
                           </div>
@@ -360,7 +360,7 @@ export function Checkout() {
                           <label htmlFor="paypal" className="font-medium flex-1 cursor-pointer">
                             PayPal
                           </label>
-                          <div className="w-16 h-6 bg-gradient-to-r from-blue-600 to-blue-500 rounded flex items-center justify-center text-xs font-bold text-white">
+                          <div className="w-16 h-6 bg-linear-to-r from-blue-600 to-blue-500 rounded flex items-center justify-center text-xs font-bold text-white">
                             PayPal
                           </div>
                         </div>
@@ -435,12 +435,12 @@ export function Checkout() {
                   {currentStep < 3 ? (
                     <Button
                       onClick={handleNext}
-                      className="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/30"
+                      className="flex-1 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/30"
                     >
                       Continue
                     </Button>
                   ) : (
-                    <Button className="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/30">
+                    <Button className="flex-1 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/30">
                       Place Order
                     </Button>
                   )}
@@ -453,7 +453,7 @@ export function Checkout() {
           <div className="lg:col-span-1">
             <div className="sticky top-20">
               <Card className="border-muted-foreground/20 shadow-xl overflow-hidden">
-                <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20 p-6 border-b">
+                <div className="bg-linear-to-br from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20 p-6 border-b">
                   <h2 className="checkout-heading text-2xl font-semibold mb-1">Order Summary</h2>
                   <p className="text-sm text-muted-foreground">
                     {ORDER_ITEMS.length} {ORDER_ITEMS.length === 1 ? "item" : "items"}

@@ -52,7 +52,7 @@ export function Header() {
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Mobile Menu Button */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -100,7 +100,7 @@ export function Header() {
                   </CollapsibleTrigger>
                   <CollapsibleContent className="pl-4 pr-3 pt-2 space-y-2">
                     {/* Featured Product */}
-                    <div className="rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 mb-2">
+                    <div className="rounded-md bg-linear-to-b from-muted/50 to-muted p-4 mb-2">
                       <div className="text-sm font-medium mb-1">
                         Featured Product
                       </div>
@@ -235,7 +235,7 @@ export function Header() {
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <Link
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                           to="/shop"
                         >
                           <div className="mb-2 mt-4 text-lg font-medium">

@@ -11,16 +11,16 @@ export function HeroSection() {
     >
       {/* Overlay for dark aesthetics */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background"
+        className="absolute inset-0 bg-linear-to-b from-background/80 via-background/60 to-background"
         style={{
           opacity: 'var(--hero-overlay-opacity)',
         }}
       />
 
       {/* Content */}
-      <div className="container relative z-10 flex flex-col items-center justify-center min-h-[var(--hero-height)] py-20">
+      <div className="container relative z-10 flex flex-col items-center justify-center min-h-(--hero-height) py-20">
         <div
-          className="max-w-[var(--hero-content-width)] mx-auto space-y-8"
+          className="max-w-(--hero-content-width) mx-auto space-y-8"
           style={{
             textAlign: 'var(--hero-text-align)' as React.CSSProperties['textAlign'],
           }}

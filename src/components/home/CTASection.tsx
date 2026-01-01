@@ -18,7 +18,7 @@ export function CTASection() {
       />
 
       {/* Content */}
-      <div className="container relative z-10 flex flex-col items-center justify-center min-h-[var(--cta-height)] py-16">
+      <div className="container relative z-10 flex flex-col items-center justify-center min-h-(--cta-height) py-16">
         <div
           className="max-w-3xl mx-auto text-center space-y-8"
           style={{

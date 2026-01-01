@@ -219,7 +219,7 @@ function MobileMenuOverlay({
                                     onClick={onClose}
                                     className={cn(
                                       'block py-2 transition-colors',
-                                      'hover:text-[var(--navbar-accent)]'
+                                      'hover:text-(--navbar-accent)'
                                     )}
                                     style={{
                                       fontFamily: 'var(--navbar-font-family)',
@@ -235,7 +235,7 @@ function MobileMenuOverlay({
                                   onClick={onClose}
                                   className={cn(
                                     'block py-2 mt-2 font-semibold',
-                                    'hover:text-[var(--navbar-accent)]'
+                                    'hover:text-(--navbar-accent)'
                                   )}
                                   style={{
                                     fontFamily: 'var(--navbar-font-family)',
@@ -254,7 +254,7 @@ function MobileMenuOverlay({
                         <Link
                           to={link.href}
                           onClick={onClose}
-                          className="block py-3 mb-4 transition-all hover:text-[var(--navbar-accent)] hover:translate-x-2"
+                          className="block py-3 mb-4 transition-all hover:text-(--navbar-accent) hover:translate-x-2"
                           style={{
                             fontFamily: 'var(--navbar-font-family)',
                             fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',

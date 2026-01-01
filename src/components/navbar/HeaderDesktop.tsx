@@ -48,7 +48,7 @@ function NavLink({
     <Link
       to={href}
       className={cn(
-        'px-4 py-2 rounded-sm transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-white',
+        'px-4 py-2 rounded-sm transition-all hover:bg-(--navbar-hover-bg) hover:text-white',
         className
       )}
       style={{
@@ -72,7 +72,7 @@ function ProductsMenu() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            className="px-4 py-2 transition-all bg-transparent hover:bg-[var(--navbar-hover-bg)] hover:text-white"
+            className="px-4 py-2 transition-all bg-transparent hover:bg-(--navbar-hover-bg) hover:text-white"
             style={{
               fontFamily: 'var(--navbar-font-family)',
               fontSize: 'var(--navbar-font-size)',
@@ -99,7 +99,7 @@ function ProductsMenu() {
                 <NavigationMenuLink asChild>
                   <Link
                     to="/shop"
-                    className="flex h-full w-full flex-col justify-end rounded-md p-6 no-underline outline-none transition-all bg-gradient-to-b from-[var(--navbar-accent)]/20 to-[var(--navbar-accent)]/40 hover:bg-[var(--navbar-hover-bg)] hover:text-white"
+                    className="flex h-full w-full flex-col justify-end rounded-md p-6 no-underline outline-none transition-all bg-linear-to-b from-(--navbar-accent)/20 to-(--navbar-accent)/40 hover:bg-(--navbar-hover-bg) hover:text-white"
                   >
                     <div
                       className="mb-2 mt-4 text-lg"
@@ -130,7 +130,7 @@ function ProductsMenu() {
                 <NavigationMenuLink asChild key={product.href}>
                   <Link
                     to={product.href}
-                    className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-white"
+                    className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-all hover:bg-(--navbar-hover-bg) hover:text-white"
                   >
                     <div
                       className="text-sm font-medium leading-none mb-1"
@@ -222,7 +222,7 @@ export function HeaderDesktop() {
           asChild
           variant="ghost"
           size="sm"
-          className="transition-all hover:bg-[var(--navbar-hover-bg)] hover:text-[var(--navbar-bg)]"
+          className="transition-all hover:bg-(--navbar-hover-bg) hover:text-(--navbar-bg)"
           style={{
             fontFamily: 'var(--navbar-font-family)',
             fontSize: 'var(--navbar-font-size)',

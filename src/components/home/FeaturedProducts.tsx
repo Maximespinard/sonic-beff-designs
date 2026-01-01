@@ -54,7 +54,7 @@ export function FeaturedProducts() {
         </div>
 
         {/* Product Grid - 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--product-grid-gap)]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-(--product-grid-gap)">
           {PRODUCTS.map((product, index) => (
             <Card
               key={product.id}
@@ -72,7 +72,7 @@ export function FeaturedProducts() {
                 }}
               >
                 {/* White Lightning motion blur effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </div>
 
               {/* Product Info */}
